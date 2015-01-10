@@ -6,7 +6,7 @@
 #    By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/10 22:03:55 by jaguillo          #+#    #+#              #
-#    Updated: 2015/01/10 22:03:56 by jaguillo         ###   ########.fr        #
+#    Updated: 2015/01/10 22:46:00 by jaguillo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ O_DIR = o
 LIBFT = libft/
 
 FLAGS = -Wall -Wextra -Werror -O2
-LINKS = -I$(H_DIR) -L$(LIBFT) -I$(LIBFT) -lft
+LINKS = -I$(H_DIR) -I$(LIBFT) -L$(LIBFT) -L/usr/X11/lib -lft -lmlx -lX11 -lXext -lm
 DEBUG = 0
 
 C_FILES = $(shell find $(C_DIR) -type f -print | grep "\.c")
