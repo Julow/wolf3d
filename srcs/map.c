@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:55:40 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/11 11:55:09 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/11 17:49:26 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void		parse_header(t_map *map, int fd)
 {
 	t_buff			header;
 
-	if (get_next_line(fd, &(header.data)) < 1)
+	if (get_next_line(fd, &header) < 1)
 		error("Empty map");
 	header.i = 0;
 	header.length = ft_strlen(header.data);
@@ -55,7 +55,7 @@ static void		parse_map(t_map *map, int fd)
 
 	pos.y = 0;
 	map->data = MAL(int*, map->height);
-	while (get_next_line(fd, &(line.data)) >= 1)
+	while (get_next_line(fd, &line) >= 1)
 	{
 		if (pos.y >= map->height)
 			break ;
