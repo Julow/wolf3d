@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:04:19 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/11 17:01:50 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/11 17:31:49 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,6 @@
 # define KEY_UP			65362
 # define KEY_RIGHT		65363
 # define KEY_DOWN		65364
-
-# define B(b)			((b)->data[(b)->i])
-# define BUFF(s,i,l)	((t_buff){(s), (i), (l)})
-
-/*
-** struct s_buff (t_buff) represent a buffer being parsed
-** 'data' is not the original malloced pointer (can't be free)
-** 'data' may not be NULL terminated
-** macro B() return the current char
-** macro BUFF() init a t_buff
-*/
-typedef struct	s_buff
-{
-	char			*data;
-	int				i;
-	int				length;
-}				t_buff;
 
 typedef struct	s_map
 {
@@ -107,14 +90,6 @@ void			error(char *error);
 double			ft_dist(t_pt p1, t_pt p2);
 t_pt			ft_nearest(t_pt pos, t_pt p1, t_pt p2);
 void			ft_drawvert(t_image *img, t_pt pt, int height, t_color color);
-
-/*
-** buff.c
-*/
-void			ft_parse(t_buff *buff, const char *parse);
-int				ft_parseint(t_buff *buff);
-double			ft_parsedouble(t_buff *buff);
-void			ft_parsespace(t_buff *buff);
 
 /*
 ** hooks.c
