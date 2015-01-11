@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:04:19 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/11 11:35:48 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/11 17:01:50 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,19 @@
 
 # define BLOCK_SIZE		64
 # define CAMERA_ALT		32
-# define VISION			60
+# define VISION			1.0471975
 # define PROJECTION		(WIDTH / 2) / tan(VISION / 2)
+
+# define SPEED			20
 
 # define GROUND			0
 # define WALL			1
+
+# define KEY_ESC		65307
+# define KEY_LEFT		65361
+# define KEY_UP			65362
+# define KEY_RIGHT		65363
+# define KEY_DOWN		65364
 
 # define B(b)			((b)->data[(b)->i])
 # define BUFF(s,i,l)	((t_buff){(s), (i), (l)})
@@ -72,6 +80,7 @@ typedef struct	s_env
 ** game.c
 */
 void			init_game(t_env *env);
+void			draw_gui(t_env *env);
 
 /*
 ** ray.c
@@ -97,6 +106,7 @@ void			env_exit(t_env *env);
 void			error(char *error);
 double			ft_dist(t_pt p1, t_pt p2);
 t_pt			ft_nearest(t_pt pos, t_pt p1, t_pt p2);
+void			ft_drawvert(t_image *img, t_pt pt, int height, t_color color);
 
 /*
 ** buff.c
