@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 11:52:52 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/10 18:22:05 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/11 17:45:46 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # define TG(t,b,i)		(*(t*)(((t_tab*)b)->data + (((t_tab*)b)->size * (i))))
 # define TI(b,i)		(((t_tab*)b)->data + (((t_tab*)b)->size * (i)))
 # define AG(t,a,i)		((t)(((t_array*)(a))->data[i]))
+
+# define B(b)			((b)->data[(b)->i])
+# define BUFF(s,i,l)	((t_buff){(s), (i), (l)})
 
 # define MIN(a,b)		(((a) < (b)) ? (a) : (b))
 # define MAX(a,b)		(((a) > (b)) ? (a) : (b))
@@ -134,6 +137,13 @@ typedef struct	s_pair
 	t_string		*key;
 	void			*value;
 }				t_pair;
+
+typedef struct	s_buff
+{
+	char			*data;
+	int				i;
+	int				length;
+}				t_buff;
 
 typedef struct	s_image
 {
@@ -413,6 +423,21 @@ int				ft_stringput(t_string *str);
 int				ft_stringputfd(t_string *str, int const fd);
 
 /*
+** =============
+** struct s_buff (t_buff) represent a buffer being parsed
+** 'data' is not the original malloced pointer (can't be free)
+** 'data' may not be NULL terminated
+** macro B() return the current char
+** macro BUFF() init a t_buff
+*/
+void			ft_parse(t_buff *buff, const char *parse);
+t_buff			ft_parsesub(t_buff *buff, const char *parse);
+int				ft_parseint(t_buff *buff);
+t_long			ft_parselong(t_buff *buff);
+double			ft_parsedouble(t_buff *buff);
+void			ft_parsespace(t_buff *buff);
+
+/*
 ** Math
 */
 int				ft_mix(int a, int b, t_big pos);
@@ -435,6 +460,7 @@ void			ft_imageclonekil(t_image *clone);
 void			ft_drawxy(t_image *img, int x, int y, t_color color);
 void			ft_drawpt(t_image *img, t_pt pt, t_color color);
 void			ft_drawnpt(t_image *img, t_pt pt, int n, t_color color);
+void			ft_drawvert(t_image *img, t_pt pt, int height, t_color color);
 
 void			ft_drawimage(t_image *dst, t_image *src, t_pt pos, t_rect part);
 
@@ -450,7 +476,7 @@ void			ft_drawtrif(t_image *img, t_pt pts[3], t_color color);
 /*
 ** get_next_line
 */
-int				get_next_line(int const fd, char **line);
+int				get_next_line(int const fd, t_buff *line);
 
 /*
 ** =============
