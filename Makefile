@@ -6,7 +6,7 @@
 #    By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/10 22:03:55 by jaguillo          #+#    #+#              #
-#    Updated: 2015/01/10 22:46:00 by jaguillo         ###   ########.fr        #
+#    Updated: 2015/01/12 09:09:58 by jaguillo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,21 +48,27 @@ $(O_DIR)/%.o: $(C_DIR)/%.c
 
 debug: _debug all
 
-clean:
-	@rm $(O_FILES) 2> /dev/null || echo "" > /dev/null
-	@rmdir $(O_DIRS) $(O_DIR) 2> /dev/null || echo "" > /dev/null
+clean: _clean
 	@make -C $(LIBFT) clean
 
-fclean: clean
-	@rm $(NAME) 2> /dev/null || echo "" > /dev/null
+fclean: _fclean
 	@make -C $(LIBFT) fclean
 
 re: fclean all
 
 rebug: fclean debug
 
+_clean:
+	@rm $(O_FILES) 2> /dev/null || echo "" > /dev/null
+	@rmdir $(O_DIRS) $(O_DIR) 2> /dev/null || echo "" > /dev/null
+
+_fclean: _clean
+	@rm $(NAME) 2> /dev/null || echo "" > /dev/null
+
+_re: _fclean all
+
 _debug:
 	$(eval FLAGS = -Wall -Wextra -g -D DEBUG_MODE)
 	$(eval DEBUG = 1)
 
-.PHONY: all debug clean fclean re rebug _debug
+.PHONY: all debug clean fclean re rebug _clean _fclean _re _debug
