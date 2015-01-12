@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:19:24 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/11 17:05:00 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/12 09:54:27 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ static void		draw_debug(t_env *env)
 	ft_stringaddi(&tmp, env->player.pos.x);
 	ft_stringadd(&tmp, " ; Y: ");
 	ft_stringaddi(&tmp, env->player.pos.y);
-	ft_stringadd(&tmp, " ; (");
-	ft_stringaddd(&tmp, env->player.dir, 6);
-	ft_stringadd(&tmp, ")");
 	mlx_string_put(env->mlx, env->win, 20, 30, 0xFFFFFFFF, tmp.content);
 	free(tmp.content);
 }

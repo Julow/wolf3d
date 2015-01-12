@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:04:19 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/12 08:54:35 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/12 10:47:11 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "libft.h"
 
-# define WIDTH			1250
-# define HEIGHT			900
+# define WIDTH			1500
+# define HEIGHT			1200
 
 # define BLOCK_SIZE		100
 # define CAMERA_ALT		32
@@ -25,8 +25,8 @@
 
 # define SPEED			40
 
-# define GROUND			0
-# define WALL			1
+# define MAP_GROUND		0
+# define MAP_WALL		1
 
 # define COLOR_NORTH	C(0xFFAA0000)
 # define COLOR_EST		C(0xFF888800)
@@ -39,13 +39,17 @@
 # define KEY_RIGHT		65363
 # define KEY_DOWN		65364
 
-# define LPT(x,y)		((t_lpt){(x), (y)})
+# define BS				BLOCK_SIZE
+# define BC				(BLOCK_SIZE / 2)
+# define BLOCK(pt)		PT((pt).x / BS * BS + BC, (pt).y / BS * BS + BC)
 
-typedef struct	s_lpt
+# define DPT(x,y)		((t_dpt){(x), (y)})
+
+typedef struct	s_dpt
 {
 	double			x;
 	double			y;
-}				t_lpt;
+}				t_dpt;
 
 typedef struct	s_map
 {

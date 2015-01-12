@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:55:40 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/11 17:49:26 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/12 10:47:07 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 /*
 ** Header
 ** width:height;spawn.x:spawn.y:spawn_dir
-**
+** =============
 ** Data
 ** 0	Ground
 ** 1	Wall
@@ -79,7 +79,7 @@ int				map_get(t_env *env, t_pt pt)
 {
 	if (pt.x < 0 || pt.y < 0 || pt.x >= env->map.width
 		|| pt.y >= env->map.height)
-		return (WALL);
+		return (MAP_WALL);
 	return (env->map.data[pt.y / BLOCK_SIZE][pt.x / BLOCK_SIZE]);
 }
 
