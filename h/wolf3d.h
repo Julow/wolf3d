@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:04:19 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/12 10:47:11 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/12 12:51:45 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "libft.h"
 
-# define WIDTH			1500
-# define HEIGHT			1200
+# define WIDTH			2560
+# define HEIGHT			1400
 
 # define BLOCK_SIZE		100
 # define CAMERA_ALT		32
@@ -32,6 +32,10 @@
 # define COLOR_EST		C(0xFF888800)
 # define COLOR_SUD		C(0xFF00AA22)
 # define COLOR_WEST		C(0xFF3099BB)
+# define COLOR_CORNER	C(0xFFFF6000)
+
+# define COLOR_SKY		C(0xFF4DC8EA)
+# define COLOR_GROUND	C(0xFF2B2B2B)
 
 # define KEY_ESC		65307
 # define KEY_LEFT		65361
@@ -105,6 +109,7 @@ void			env_exit(t_env *env);
 */
 void			error(char *error);
 double			ft_dist(t_pt p1, t_pt p2);
+int				ft_dist2(t_pt p1, t_pt p2);
 t_pt			ft_nearest(t_pt pos, t_pt p1, t_pt p2);
 void			ft_drawvert(t_image *img, t_pt pt, int height, t_color color);
 

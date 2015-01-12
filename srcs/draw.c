@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/11 00:38:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/12 10:52:42 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/12 13:10:10 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ static t_color	wall_color(t_pt p1, t_pt p2)
 {
 	p1.x -= p2.x;
 	p1.y -= p2.y;
-	if (p1.x <= 0 && p1.y <= 0)
+	if (p1.x == 0 && p1.y > 0)
 		return (COLOR_EST);
-	if (p1.x > 0 && p1.y <= 0)
-		return (COLOR_NORTH);
-	if (p1.x > 0 && p1.y > 0)
+	if (p1.x == 0 && p1.y < 0)
 		return (COLOR_WEST);
-	if (p1.x <= 0 && p1.y > 0)
+	if (p1.x > 0 && p1.y == 0)
+		return (COLOR_NORTH);
+	if (p1.x < 0 && p1.y == 0)
 		return (COLOR_SUD);
-	return (C(0xFF000000));
+	return (COLOR_CORNER);
 }
 
 static void		cast(t_env *env, double dir, int x)
@@ -48,11 +48,12 @@ static void		cast(t_env *env, double dir, int x)
 		pos.x += delta.x;
 		pos.y += delta.y;
 	}
-	wall = (HEIGHT - (PROJECTION * BLOCK_SIZE)
-		/ ft_dist(tmp, env->player.pos)) / 2;
+	wall = (HEIGHT - ((PROJECTION * BLOCK_SIZE)
+		/ ft_dist(tmp, env->player.pos))) / 2;
+	ft_drawvert(&(env->img), PT(x, 0), wall, COLOR_SKY);
 	ft_drawvert(&(env->img), PT(x, wall), HEIGHT - wall - wall,
-		wall_color(last, BLOCK(tmp)));
-	ft_drawvert(&(env->img), PT(x, HEIGHT - wall), wall, C(0xFF222222));
+		wall_color(BLOCK(last), BLOCK(tmp)));
+	ft_drawvert(&(env->img), PT(x, HEIGHT - wall), wall, COLOR_GROUND);
 }
 
 void			draw_map(t_env *env)

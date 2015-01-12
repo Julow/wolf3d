@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:19:24 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/12 09:54:27 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/12 12:44:13 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int				expose_hook(void *param)
 
 	env = (t_env*)param;
 	env->redraw = FALSE;
-	ft_imageclr(&(env->img));
 	draw_map(env);
 	draw_gui(env);
 	mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);

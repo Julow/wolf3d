@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 23:02:35 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/12 08:54:42 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/12 12:51:35 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ double			ft_dist(t_pt p1, t_pt p2)
 {
 	p1 = PT(p1.x - p2.x, p1.y - p2.y);
 	return (sqrt((p1.x * p1.x) + (p1.y * p1.y)));
+}
+
+int				ft_dist2(t_pt p1, t_pt p2)
+{
+	p1 = PT(p1.x - p2.x, p1.y - p2.y);
+	return ((p1.x * p1.x) + (p1.y * p1.y));
 }
 
 t_pt			ft_nearest(t_pt pos, t_pt p1, t_pt p2)
