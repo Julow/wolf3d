@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/11 00:38:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/12 13:10:10 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/14 15:02:46 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ static void		cast(t_env *env, double dir, int x)
 		pos.x += delta.x;
 		pos.y += delta.y;
 	}
-	wall = (HEIGHT - ((PROJECTION * BLOCK_SIZE)
+	wall = (HEIGHT - ((PROJECTION * env->map.block_size)
 		/ ft_dist(tmp, env->player.pos))) / 2;
 	ft_drawvert(&(env->img), PT(x, 0), wall, COLOR_SKY);
 	ft_drawvert(&(env->img), PT(x, wall), HEIGHT - wall - wall,
-		wall_color(BLOCK(last), BLOCK(tmp)));
+		wall_color(round_block(env, last), round_block(env, tmp)));
 	ft_drawvert(&(env->img), PT(x, HEIGHT - wall), wall, COLOR_GROUND);
 }
 

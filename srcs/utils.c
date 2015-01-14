@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 23:02:35 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/12 12:51:35 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/14 14:42:02 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@ void			error(char *error)
 	ft_putstr_fd(error, 2);
 	ft_putchar_fd('\n', 2);
 	exit(1);
+}
+
+inline t_pt		round_block(t_env *env, t_pt pt)
+{
+	const int		b_size = env->map.block_size;
+
+	pt.x = pt.x / b_size * b_size + (b_size / 2);
+	pt.y = pt.y / b_size * b_size + (b_size / 2);
+	return (pt);
 }
 
 double			ft_dist(t_pt p1, t_pt p2)

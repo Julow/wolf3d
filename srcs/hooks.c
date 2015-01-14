@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:19:24 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/12 12:44:13 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/14 14:56:58 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int				expose_hook(void *param)
 
 static void		player_move(t_env *env, int speed)
 {
+	speed = env->map.block_size * speed / 100;
 	env->player.pos.x += cos(env->player.dir) * speed;
 	env->player.pos.y += sin(env->player.dir) * speed;
 }

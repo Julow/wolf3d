@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:04:19 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/12 12:51:45 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/14 14:59:10 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # define WIDTH			2560
 # define HEIGHT			1400
 
-# define BLOCK_SIZE		100
-# define CAMERA_ALT		32
 # define VISION			1.1170107212
 # define PROJECTION		(WIDTH / 2) / tan(VISION / 2)
 
@@ -28,11 +26,11 @@
 # define MAP_GROUND		0
 # define MAP_WALL		1
 
-# define COLOR_NORTH	C(0xFFAA0000)
-# define COLOR_EST		C(0xFF888800)
-# define COLOR_SUD		C(0xFF00AA22)
-# define COLOR_WEST		C(0xFF3099BB)
-# define COLOR_CORNER	C(0xFFFF6000)
+# define COLOR_NORTH	C(0xFFF3721B)
+# define COLOR_EST		C(0xFFDC5B04)
+# define COLOR_SUD		C(0xFF9b4203)
+# define COLOR_WEST		C(0xFFC35404)
+# define COLOR_CORNER	C(0xFF994F00)
 
 # define COLOR_SKY		C(0xFF4DC8EA)
 # define COLOR_GROUND	C(0xFF2B2B2B)
@@ -42,10 +40,6 @@
 # define KEY_UP			65362
 # define KEY_RIGHT		65363
 # define KEY_DOWN		65364
-
-# define BS				BLOCK_SIZE
-# define BC				(BLOCK_SIZE / 2)
-# define BLOCK(pt)		PT((pt).x / BS * BS + BC, (pt).y / BS * BS + BC)
 
 # define DPT(x,y)		((t_dpt){(x), (y)})
 
@@ -60,6 +54,8 @@ typedef struct	s_map
 	int				**data;
 	int				width;
 	int				height;
+	int				block_size;
+	int				camera_h;
 	t_pt			spawn;
 	double			spawn_dir;
 }				t_map;
@@ -108,10 +104,10 @@ void			env_exit(t_env *env);
 ** utils.c
 */
 void			error(char *error);
+inline t_pt		round_block(t_env *env, t_pt pt);
 double			ft_dist(t_pt p1, t_pt p2);
 int				ft_dist2(t_pt p1, t_pt p2);
 t_pt			ft_nearest(t_pt pos, t_pt p1, t_pt p2);
-void			ft_drawvert(t_image *img, t_pt pt, int height, t_color color);
 
 /*
 ** hooks.c
