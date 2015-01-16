@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:04:19 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/14 14:59:10 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/16 07:41:14 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 
 # define COLOR_NORTH	C(0xFFF3721B)
 # define COLOR_EST		C(0xFFDC5B04)
-# define COLOR_SUD		C(0xFF9b4203)
-# define COLOR_WEST		C(0xFFC35404)
+# define COLOR_SUD		C(0xFF0B6779)
+# define COLOR_WEST		C(0xFF049FBE)
 # define COLOR_CORNER	C(0xFF994F00)
 
 # define COLOR_SKY		C(0xFF4DC8EA)

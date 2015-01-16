@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:55:40 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/14 14:59:44 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/16 07:44:48 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ static void		parse_header(t_map *map, int fd)
 	ft_parse(&header, "; ");
 	map->camera_h = ft_parseint(&header);
 	ft_parse(&header, "; ");
-	map->spawn.x = ft_parseint(&header);
+	map->spawn.x = ft_parseint(&header) * map->block_size + map->block_size / 2;
 	ft_parse(&header, ": ");
-	map->spawn.y = ft_parseint(&header);
+	map->spawn.y = ft_parseint(&header) * map->block_size + map->block_size / 2;
 	ft_parse(&header, ": ");
 	map->spawn_dir = ft_parseint(&header);
 	if (map->spawn.x <= 0 || map->spawn.y <= 0)
