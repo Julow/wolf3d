@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:55:40 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/17 22:03:50 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/18 13:26:35 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,12 @@ static void		parse_map(t_map *map, int fd)
 
 int				map_get(t_env *env, t_pt pt)
 {
+	pt.x /= env->map.block;
+	pt.y /= env->map.block;
 	if (pt.x < 0 || pt.y < 0 || pt.x >= env->map.width
 		|| pt.y >= env->map.height)
 		return (MAP_WALL);
-	return (env->map.data[pt.y / env->map.block][pt.x
-		/ env->map.block]);
+	return (env->map.data[pt.y][pt.x]);
 }
 
 void			map_ini(t_map *map, const char *file)
@@ -100,6 +101,4 @@ void			map_ini(t_map *map, const char *file)
 	parse_header(map, fd);
 	parse_map(map, fd);
 	close(fd);
-	map->width *= map->block;
-	map->height *= map->block;
 }

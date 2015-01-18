@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:04:19 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/18 10:59:34 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/18 13:37:14 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define PROJECTION		(WIDTH / 2) / tan(VISION / 2)
 
 # define SPEED			40
+# define ROTATION		0.15707963267
 
 # define MAP_GROUND		0
 # define MAP_WALL		1
@@ -34,6 +35,10 @@
 
 # define COLOR_SKY		C(0xFF4DC8EA)
 # define COLOR_GROUND	C(0xFF2B2B2B)
+
+# define MINIMAP_COLOR	C(0x77222222)
+# define MINIMAP_OFFSET	32
+# define MINIMAP_BLOCK	12
 
 # define KEY_ESC		65307
 # define KEY_LEFT		65361

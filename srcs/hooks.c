@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:19:24 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/17 22:03:39 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/18 11:34:57 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ int				key_hook(int keycode, void *param)
 	if (keycode == KEY_ESC)
 		env_exit(param);
 	else if (keycode == KEY_LEFT)
-		env->player.dir -= 0.2;
+		env->player.dir -= ROTATION;
 	else if (keycode == KEY_RIGHT)
-		env->player.dir += 0.2;
+		env->player.dir += ROTATION;
 	else if (keycode == KEY_UP)
 		player_move(env, SPEED);
 	else if (keycode == KEY_DOWN)
