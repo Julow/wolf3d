@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:23:15 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/12 09:25:58 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/18 13:59:07 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void			env_start(t_env *env)
 		error("mlx: Cannot create window");
 	mlx_expose_hook(env->win, &expose_hook, env);
 	mlx_key_hook(env->win, &key_hook, env);
-	mlx_key_hook(env->win, &key_hook, env);
 	mlx_loop_hook(env->mlx, &loop_hook, env);
 	mlx_loop(env->mlx);
 }
@@ -55,6 +54,5 @@ void			env_exit(t_env *env)
 {
 	mlx_destroy_window(env->mlx, env->win);
 	mlx_destroy_image(env->mlx, env->img.img);
-	free(env);
 	exit(0);
 }

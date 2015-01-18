@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/11 00:38:28 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/18 13:24:55 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/18 17:11:07 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static t_pt		cast_y(t_env *env, double dir)
 
 	delta.x = (cos(dir) > 0) ? env->map.block : -env->map.block;
 	delta.y = env->map.block * tan(dir);
-	pt.x = (env->player.pos.x + delta.x) / env->map.block * env->map.block;
+	pt.x = (env->player.pos.x) / env->map.block * env->map.block + delta.x;
 	pt.y = (env->player.pos.y - pt.x) * tan(dir) + env->player.pos.y;
 	while (1)
 	{
@@ -99,7 +99,7 @@ static t_pt		cast_x(t_env *env, double dir)
 
 	delta.x = env->map.block / tan(dir);
 	delta.y = (sin(dir) > 0) ? env->map.block : -env->map.block;
-	pt.y = (env->player.pos.y + delta.y) / env->map.block * env->map.block;
+	pt.y = (env->player.pos.y) / env->map.block * env->map.block + delta.y;
 	pt.x = (env->player.pos.y - pt.y) / tan(dir) + env->player.pos.x;
 	while (1)
 	{
@@ -133,8 +133,8 @@ void			draw_map(t_env *env)
 	x = 0;
 	while (x < WIDTH)
 	{
-		draw_wall(env, x, ft_nearest(env->player.pos,
-			cast_x(env, dir + env->player.dir), cast_y(env, dir + env->player.dir)));
+		draw_wall(env, x, ft_nearest(env->player.pos, cast_x(env,
+			dir + env->player.dir), cast_y(env, dir + env->player.dir)));
 		x++;
 		dir += delta;
 	}
