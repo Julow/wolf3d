@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:55:40 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/16 07:44:48 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/17 22:03:50 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 /*
 ** Header
-** width:height;block_size;camera_h;spawn.x:spawn.y:spawn_dir
+** width:height;block;camera_h;spawn.x:spawn.y:spawn_dir
 ** -------------
 ** Data
 ** 0	Ground
@@ -39,15 +39,15 @@ static void		parse_header(t_map *map, int fd)
 	if (map->width <= 0 || map->height <= 0)
 		error("Map: too small");
 	ft_parse(&header, "; ");
-	map->block_size = ft_parseint(&header);
-	if (map->block_size <= 0)
+	map->block = ft_parseint(&header);
+	if (map->block <= 0)
 		error("Map: bad block size");
 	ft_parse(&header, "; ");
 	map->camera_h = ft_parseint(&header);
 	ft_parse(&header, "; ");
-	map->spawn.x = ft_parseint(&header) * map->block_size + map->block_size / 2;
+	map->spawn.x = ft_parseint(&header) * map->block + map->block / 2;
 	ft_parse(&header, ": ");
-	map->spawn.y = ft_parseint(&header) * map->block_size + map->block_size / 2;
+	map->spawn.y = ft_parseint(&header) * map->block + map->block / 2;
 	ft_parse(&header, ": ");
 	map->spawn_dir = ft_parseint(&header);
 	if (map->spawn.x <= 0 || map->spawn.y <= 0)
@@ -86,8 +86,8 @@ int				map_get(t_env *env, t_pt pt)
 	if (pt.x < 0 || pt.y < 0 || pt.x >= env->map.width
 		|| pt.y >= env->map.height)
 		return (MAP_WALL);
-	return (env->map.data[pt.y / env->map.block_size][pt.x
-		/ env->map.block_size]);
+	return (env->map.data[pt.y / env->map.block][pt.x
+		/ env->map.block]);
 }
 
 void			map_ini(t_map *map, const char *file)
@@ -100,6 +100,6 @@ void			map_ini(t_map *map, const char *file)
 	parse_header(map, fd);
 	parse_map(map, fd);
 	close(fd);
-	map->width *= map->block_size;
-	map->height *= map->block_size;
+	map->width *= map->block;
+	map->height *= map->block;
 }

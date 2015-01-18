@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 23:02:35 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/14 14:42:02 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/17 22:03:54 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void			error(char *error)
 
 inline t_pt		round_block(t_env *env, t_pt pt)
 {
-	const int		b_size = env->map.block_size;
+	const int		b_size = env->map.block;
 
 	pt.x = pt.x / b_size * b_size + (b_size / 2);
 	pt.y = pt.y / b_size * b_size + (b_size / 2);

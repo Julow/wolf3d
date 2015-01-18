@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:04:19 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/16 07:41:14 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/01/18 10:59:34 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "libft.h"
 
-# define WIDTH			2560
-# define HEIGHT			1400
+# define WIDTH			1920
+# define HEIGHT			1040
 
 # define VISION			1.1170107212
 # define PROJECTION		(WIDTH / 2) / tan(VISION / 2)
@@ -54,7 +54,7 @@ typedef struct	s_map
 	int				**data;
 	int				width;
 	int				height;
-	int				block_size;
+	int				block;
 	int				camera_h;
 	t_pt			spawn;
 	double			spawn_dir;
