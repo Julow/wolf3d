@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:04:19 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/18 13:37:14 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/02/09 16:31:26 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void			draw_map(t_env *env);
 ** map.c
 */
 int				map_get(t_env *map, t_pt pt);
-void			map_ini(t_map *map, const char *file);
+void			map_ini(t_map *map);
 
 /*
 ** env.c

@@ -6,7 +6,7 @@
 /*   By: jaguillo <jaguillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 22:55:40 by jaguillo          #+#    #+#             */
-/*   Updated: 2015/01/18 13:26:35 by jaguillo         ###   ########.fr       */
+/*   Updated: 2015/02/09 16:32:52 by jaguillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,13 @@ int				map_get(t_env *env, t_pt pt)
 	return (env->map.data[pt.y][pt.x]);
 }
 
-void			map_ini(t_map *map, const char *file)
+void			map_ini(t_map *map)
 {
 	int				fd;
 
-	fd = open(file, O_RDONLY);
+	fd = open("map.wolf", O_RDONLY);
 	if (fd < 0)
-		error(strerror(errno));
+		error("Cannot open the map.");
 	parse_header(map, fd);
 	parse_map(map, fd);
 	close(fd);
